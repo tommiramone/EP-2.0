@@ -1,0 +1,37 @@
+[{
+    "precio": 1200,
+    "id": 1,
+    "title": "Remera Almafuerte",
+    "thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_770372-MLA46579579726_072021-W.jpg"
+  },
+  {
+    "precio": 900,
+    "id": 2,
+    "title": "Mochila LPDA",
+    "thumbnailUrl": "http://d3ugyf2ht6aenh.cloudfront.net/stores/614/494/products/laspastillas1-adbae9d09b5820715015390358014397-640-0.png"
+  },
+  {
+    "precio": 1400,
+    "id": 3,
+    "title": "Remera Trotsky Vengarán",
+    "thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_823138-MLU31242360371_062019-O.jpg"
+  },
+  {
+    "precio": 500,
+    "id": 4,
+    "title": "Taza Callejeros",
+    "thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_841261-MLA26708023713_012018-O.jpg"
+  },
+  {
+    "precio": 2000,
+    "id": 5,
+    "title": "Buzo La Vela Puerca",
+    "thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_459115-MLA25138045896_102016-O.jpg"
+  },
+  {
+    "precio": 3000,
+    "id": 6,
+    "title": "Campera Patricio Rey y sus Redonditos de Ricota",
+    "thumbnailUrl": "https://http2.mlstatic.com/D_NQ_NP_721491-MLA41736836395_052020-W.jpg"
+  }
+]

@@ -1,0 +1,166 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="//fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Lato&display=swap" rel="stylesheet">
+    <title>Escena Paralela - Inicio</title>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description"
+        content="Escena Paralela tiene toda la información y contenido de la cultura para que te informes y disfrutes con músicos, actores, comediantes y más.">
+    <meta name="keywords" content="Música, cultura, noticias, entrevistas, difusión, cine, teatros, series">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+
+    <!---NAV-->
+    <header>
+        <div class="cabecera cabecera-md">
+            <a href="../index.html" class="cabeceraBrand ca">
+                <img src="../img/EP.png" alt="logo">
+            </a>
+
+            <nav>
+                <label for="menu-dropdown" class="menu menu-sm">
+                    <span class="iconify" data-icon="ic:baseline-format-align-justify" data-width="30"
+                        data-height="30"></span>
+                </label>
+                <input type="checkbox" id="menu-dropdown" hidden>
+
+                <ul class="menu menu-md">
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="menuActive"><a href="noticias.html">noticias</a></li>
+                    <li><a href="eventos.html">eventos</a></li>
+                    <li><a href="entrevistas.html">entrevistas</a></li>
+                    <li><a href="tienda.html">tienda</a></li>
+                    <li><a href="contacto.html">contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-------->
+
+    <main>
+        <!-- TITULO -->
+        <div>
+            <h2 class="tiendaTitulo">Toda la ropa de tu banda favorita a un solo click</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Acción</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="items"></tbody>
+                <tfoot>
+                    <tr id="footer">
+                        <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+
+            <div class="row" id="card">
+
+            </div>
+
+        </div>
+        <!--  -->
+        <!-- TEMPLATE CARD -->
+        <template id="template-card">
+            <div class="col-12 mb-2 col-md-4">
+                <div class="card">
+                    <img src="" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">Titulo</h5>
+                        <p class="card-text">Precio</p>
+                        <a href="#" class="btn btn-primary">
+                            <span class="iconify" data-icon="mdi:cart-outline"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!--  -->
+
+        <template id="template-footer">
+            <th scope="row" colspan="2">Total productos</th>
+            <td>10</td>
+            <td>
+                <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+                    vaciar todo
+                </button>
+            </td>
+            <td class="font-weight-bold">$ <span>5000</span></td>
+        </template>
+
+        <template id="template-carrito">
+            <tr>
+                <th scope="row">id</th>
+                <td>Café</td>
+                <td>1</td>
+                <td>
+                    <button class="btn btn-info btn-sm">
+                        +
+                    </button>
+                    <button class="btn btn-danger btn-sm">
+                        -
+                    </button>
+                </td>
+                <td>$ <span>500</span></td>
+            </tr>
+        </template>
+
+        <div id="btnForm">
+
+        </div>
+
+    </main>
+    <!-- FOOTER -->
+    <footer>
+        <div class="pie">
+            <div class="pieRedes">
+                <p>© Escena Paralela</p>
+
+                <div>
+                    <a href="https://www.youtube.com/channel/UCTVkm3or42LfDMHSzDLf0tA">
+                        <img src="../img/youtube.png" alt="" class="pieRedesYt">
+                    </a>
+
+                    <a href="https://www.instagram.com/escenaparalela/?hl=es-la">
+                        <img src="../img/instagram.png" alt="" class="pieRedesIg">
+                    </a>
+                </div>
+            </div>
+
+            <div class="pieMenu">
+                <ul>
+                    <li class="menuActive"><a href="index.html">Home</a></li>
+                    <li><a href="noticias.html">noticias</a></li>
+                    <li><a href="eventos.html">eventos</a></li>
+                    <li><a href="entrevistas.html">entrevistas</a></li>
+                    <li><a href="tienda.html">tienda</a></li>
+                    <li><a href="contacto.html">contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!--  -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../JS/main.js"></script>
+</body>
+
+</html>
