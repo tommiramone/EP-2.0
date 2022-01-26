@@ -66,6 +66,7 @@ $(() => {
                 $('#status').text(resp);
                 $('#form')[0].reset()
                 $('#genero').hide()
+                $('#otros').hide()
             },
             error: function (jqXHR, status, resp) {
                 $('#status').text(status)
