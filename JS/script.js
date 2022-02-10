@@ -1,7 +1,7 @@
-//JQUERY - FORMS
-
 // PASAR LA INFORMACION A UN ARCHIVO LOCAL MEDIANTE AJAX 
 // CUANDO SE PULSE "MÚSICA" U "OTRO" EN EL "SELECT" APARECER UN INPUT PARA COMPLETAR DEPENDIENDO EL CASO. 
+// BOTON PARA SUBIR 
+
 $(() => {
 
     //ESTILO DE STATUS
@@ -21,8 +21,6 @@ $(() => {
     let adicional;
 
     const url = "https://jsonplaceholder.typicode.com/photos";
-
-    //¿COMO VALIDAR CON JQUERY Y LUEGO HACER UNA LLAMADA AJAX?
 
     $('#form').on('submit', function (e) {
         e.preventDefault();
@@ -76,7 +74,7 @@ $(() => {
 
     })
 
-    //INPUT QUE APARECE PARA GENERO
+    //INPUT QUE APARECE PARA 'GENERO'
     $('#genero').hide()
     $("#opciones").change(function () {
         if (this.value == 2) {
@@ -86,7 +84,7 @@ $(() => {
         }
     })
 
-    //INPUT PARA OTROS
+    //INPUT PARA 'OTROS'
     $('#otros').hide() 
     $('#opciones').change(function () {
         if (this.value == 4) {
@@ -94,5 +92,32 @@ $(() => {
         } else {
             $('#otros').hide()
         }
+    })
+
+    
+    //AGREGAMOS BOTÓN EN EL DOM
+    $('#btnUp').append (
+        `
+        <button>
+            <span class="iconify" data-icon="mdi:arrow-up-box" id="scroll" data-width="70" data-height="70"></span>
+        </button>
+        `
+    )
+
+    //HACEMOS QUE EL BOTÓN APAREZCA O DESAPAREZCA A MEDIDA QUE SCROLLEAMOS
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 1000) {
+            $('#scroll').show('slow');
+        } else {
+            $('#scroll').hide('slow');
+        }
+    });
+
+    //LE DAMOS LA FUNCIÓN DE PODER SUBIR LA PÁGINA SI HACEMOS CLICK EN ÉL
+    $('#btnUp').on('click', function () {
+        $('body, html').animate({
+            scrollTop: '0px',
+        })
+
     })
 })

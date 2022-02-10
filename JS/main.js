@@ -1,7 +1,6 @@
 // La idea es que cada elemento disponible se pueda añadir a un carrito y este luego arroje un total de precio. 
-// El precio del producto se modificará con JS con lo aprendido. 
 
-// A su vez se utilizará el formulario para que las bandas queden resguardadas en una base de datos para ser contactadas. 
+//SE UTILIZARÁN LOS TEMPLATE PARA PODER PINTAR LAS CARDS EN LA PÁGINA WEB
 
 //LLAMADA DE TODOS LOS ELEMENTOS DEL DOM
 const card = document.getElementById('card');
@@ -14,6 +13,7 @@ const fragment = document.createDocumentFragment();
 let carrito = {}
 
 
+//ADDEVENT PARA QUE ANTES DE EJECUTAR ESPERE QUE SE CARGUE TODO EL HTML
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
     if (localStorage.getItem('carrito')) {
@@ -43,7 +43,9 @@ const fetchData = async () => {
 }
 // 
 
+//FUNCION PARA QUE SE GENEREN LAS CARDS CON EL CONTENIDO DEL JSON EN LA PÁGINA 
 let pintarCard = data => {
+    //TOMA LOS DATOS DE LOS ELEMENTOS DEL JSON
     data.forEach(producto => {
         templateCard.querySelector('h5').textContent = producto.title;
         templateCard.querySelector('p').textContent = producto.precio;
@@ -58,7 +60,7 @@ let pintarCard = data => {
     card.appendChild(fragment);
 }
 
-//ESTA FUNCIÓN MANDA EL ELEMENTO PADRE DEL PRODUCTO SELECCIONADO AL OBJETO SETCARRITO
+//FUNCIÓN QUE MEDIANTE EL BOTÓN MANDA LA INFORMACIÓN DEL PRODUCTO AL CARRITO (setCarrito)
 const agregarProductos = e => {
     if (e.target.classList.contains('btn-primary')) {
         setCarrito(e.target.parentElement)
@@ -66,7 +68,9 @@ const agregarProductos = e => {
     e.stopPropagation()
 }
 
+//CAPTURA TODOS LOS ELEMENTOS MANDADOS DESDE LA FUNCION agregarProductos
 const setCarrito = objeto => {
+    //OBJETO QUE TOMA LO ENVIADO DESDE agregarProductos
     const producto = {
         id: objeto.querySelector('.btn-primary').dataset.id,
         title: objeto.querySelector('h5').textContent,
@@ -74,6 +78,7 @@ const setCarrito = objeto => {
         cantidad: 1
     }
 
+    //CONDICIÓN PARA QUE SE AUMENTE EN 1, POR CADA VEZ QUE SE LO SELECCIONA, LA CANTIDAD DEL PRODUCTO EN CASO DE QUE ESTE YA ESTÉ AGREGADO. 
     if (carrito.hasOwnProperty(producto.id)) {
         producto.cantidad = carrito[producto.id].cantidad + 1
     }
@@ -85,9 +90,11 @@ const setCarrito = objeto => {
     pintarCarrito()
 }
 
+//FUNCIÓN PARA QUE AL AGREGAR UN ELEMENTO SE PINTE ESTE MISMO EN EL DOM
 const pintarCarrito = () => {
     items.innerHTML = ''
 
+    //PARA TRAER LA INFORMACIÓN DEL PRODUCTO AGREGADO
     Object.values(carrito).forEach(producto => {
         templateCarrito.querySelector('th').textContent = producto.title
         templateCarrito.querySelectorAll('td')[0].textContent = producto.title
@@ -107,18 +114,22 @@ const pintarCarrito = () => {
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
 
+//FUNCIÓN PARA QUE SE PINTE EL FOOTER EN EL DOM
 const pintarFooter = () => {
     footer.innerHTML = ''
 
+    //CONDICIONAL PARA QUE AL VACIAR EL CARRITO SE PINTE CIERTA INFORMACIÓN
     if (Object.values(carrito).length === 0) {
         footer.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`
 
         return
     }
 
+    //FUNCIÓN PARA CALCULAR LA CANTIDAD TOTAL DE PRODUCTOS SELECCIONADOS EN EL CARRITO 
     const nCantidad = Object.values(carrito).reduce((acc, {
         cantidad
     }) => acc + cantidad, 0)
+    //FUNCIÓN PARA CALCULAR EL PRECIO TOTAL DEL CARRITO
     const nPrecio = Object.values(carrito).reduce((acc, {
         cantidad,
         precio
@@ -131,6 +142,7 @@ const pintarFooter = () => {
     fragment.appendChild(clone)
     footer.appendChild(fragment)
 
+    //FUNCIONALIDAD DEL BOTÓN PARA VACIAR EL CARRITO
     const vaciar = document.getElementById('vaciar-carrito')
     vaciar.addEventListener('click', () => {
         carrito = {}
@@ -139,7 +151,9 @@ const pintarFooter = () => {
     })
 }
 
+//FUNCIONALIDAD DE LOS BOTONES DE SUMA Y RESTA DE CANTIDAD DE PRODUCTOS
 const btnAccion = e => {
+    //BOTON DE SUMA 
     if (e.target.classList.contains('btn-info')) {
         carrito[e.target.dataset.id]
         const producto = carrito[e.target.dataset.id]
@@ -151,6 +165,7 @@ const btnAccion = e => {
         pintarCarrito()
     }
 
+    //BOTON DE RESTA
     if (e.target.classList.contains('btn-danger')) {
         const producto = carrito[e.target.dataset.id]
         producto.cantidad--
@@ -164,40 +179,3 @@ const btnAccion = e => {
     e.stopPropagation
 
 }
-
-$(document).ready(function () {
-
-    //CREACION DE BOTÓN 
-    $('#btnForm').append(
-        `
-        <button>
-          <span class="iconify" data-icon="mdi:arrow-up-box" id="scroll" data-width="70" data-height="70"></span>
-        </button>
-        `
-    )
-
-    //PERSONALIZACIÓN DEL BOTÓN
-    $('#scroll').css({
-        'display': 'flex',
-        'position': 'fixed',
-        'bottom': '1 em',
-        'right': '10 px',
-        'color': '#039dff',
-    })
-
-    //ANIMACIÓN AL SCROLLEAR HACÍA ABAJO O ESTAR ARRIBA 
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 1000) {
-            $('#scroll').show('slow');
-        } else {
-            $('#scroll').hide('slow');
-        }
-    });
-
-    $('#btnForm').on('click', function () {
-        $('body, html').animate({
-            scrollTop: '0px'
-        })
-
-    })
-})

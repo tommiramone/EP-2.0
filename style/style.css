@@ -129,8 +129,6 @@ input[type=checkbox]:checked~.menu-md {
     grid-template-columns: 1fr auto;
 }
 
-
-
 /*  */
 
 /* INICIO*/
@@ -184,7 +182,7 @@ input[type=checkbox]:checked~.menu-md {
     width: 95%;
     display: flex;
     flex-flow: column;
-    /* margin: 0 auto; */
+    margin: 0 auto;
     text-align: left;
     padding: .5em;
 }
@@ -365,13 +363,13 @@ td {
     overflow: hidden;
 }
 
-/* #scroll {
+#scroll {
     display: flex;
     position: fixed;
     bottom: 1em;
     right: 10px;
     color: #039dff;
-} */
+}
 
 /*  */
 
