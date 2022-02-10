@@ -105,7 +105,7 @@ $(() => {
     )
 
     //HACEMOS QUE EL BOTÓN APAREZCA O DESAPAREZCA A MEDIDA QUE SCROLLEAMOS
-    $(window).scroll(function () {
+    $(window).scroll(function (e) {
         if ($(this).scrollTop() > 1000) {
             $('#scroll').show('slow');
         } else {
